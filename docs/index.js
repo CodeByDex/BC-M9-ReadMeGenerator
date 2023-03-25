@@ -1,6 +1,7 @@
 // TODO: Include packages needed for this application
 const inquirer = require("inquirer");
 const fs = require("fs");
+const gm = require("./utils/generateMarkdown");
 
 // TODO: Create an array of questions for user input
 const questions = [
@@ -28,7 +29,6 @@ const questions = [
         validate: ResponseHasContent
     },
     {
-        //TODO: Swithc to choice
         type: "list",
         name: "license",
         message: "Please select a license for this project:",
@@ -78,7 +78,7 @@ function writeToFile(fileName, data) {
         fs.mkdirSync("./output");
     }
 
-    fs.writeFile("output/"+fileName, JSON.stringify(data), (error) => {
+    fs.writeFile("output/"+fileName, gm.generateMarkdown(data), (error) => {
         if(error){
             console.log(`There was an error: ${error}`);
         } else {
