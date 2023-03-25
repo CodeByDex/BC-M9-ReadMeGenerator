@@ -11,35 +11,35 @@ const questions = [
         message: "What would you like the Title of the readme to be?",
         validate: ResponseHasContent
     },
-    // {
-    //     type: "editor",
-    //     name: "description",
-    //     message: "Please provide a description for the readme:",
-    //     validate: ResponseHasContent
-    // },
-    // {
-    //     type: "input",
-    //     name: "install",
-    //     message: "Please provide a installation instructions for this project:"
-    // },
-    // {
-    //     type: "input",
-    //     name: "usage",
-    //     message: "Please provide a instructions on how to use this project:",
-    //     validate: ResponseHasContent
-    // },
-    // {
-    //     type: "list",
-    //     name: "license",
-    //     message: "Please select a license for this project:",
-    //     choices: [
-    //         "Apache License 2.0",
-    //         "GNU General Public License v3.0",
-    //         "MIT License",
-    //         "No License"
-    //     ],
-    //     validate: ResponseHasContent
-    // },
+    {
+        type: "editor",
+        name: "description",
+        message: "Please provide a description for the readme:",
+        validate: ResponseHasContent
+    },
+    {
+        type: "input",
+        name: "install",
+        message: "Please provide a installation instructions for this project:"
+    },
+    {
+        type: "input",
+        name: "usage",
+        message: "Please provide a instructions on how to use this project:",
+        validate: ResponseHasContent
+    },
+    {
+        type: "list",
+        name: "license",
+        message: "Please select a license for this project:",
+        choices: [
+            "Apache License 2.0",
+            "GNU General Public License v3.0",
+            "MIT License",
+            "No License"
+        ],
+        validate: ResponseHasContent
+    },
     {
         type: "input",
         name: "contributing",
