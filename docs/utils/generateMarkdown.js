@@ -1,18 +1,24 @@
-// TODO: Create a function that returns a license badge based on which license is passed in
-// If there is no license, return an empty string
-function renderLicenseBadge(license) {}
 
-// TODO: Create a function that returns the license link
-// If there is no license, return an empty string
-function renderLicenseLink(license) {}
+function renderLicenseSection(data, header, body) {
+  if (data.license != "none") {
+    return CreateSection(renderLicenseBadge(data.license), "License", header, body);
+  } else {
+    return CreateSection("This Project is not licensed", "License", header, body);
+  }
+}
 
-// TODO: Create a function that returns the license section of README
-// If there is no license, return an empty string
-function renderLicenseSection(license) {}
+function renderLicenseBadge(license) {
+  return `![GitHub license](${renderLicenseLink(license)})`
+}
 
-// TODO: Create a function to generate markdown for README
+function renderLicenseLink(license) {
+  return `https://img.shields.io/badge/license-${license}-blue.svg`
+}
+
 function generateMarkdown(data) {
+  //needed to convert multi-lines of text from the description into markdown exepcted line endings.
   const lineEndRegEx = /\r\n/g;
+  
   let header = "";
   let body = "";
 
@@ -26,7 +32,7 @@ ${data.description.replace(lineEndRegEx, "  \n")};
 
 ({ header, body } = CreateSection(data.install, "Installation", header, body));
 ({ header, body } = CreateSection(data.usage, "Usage", header, body));
-({ header, body } = CreateSection(data.license, "License", header, body));
+({ header, body } = renderLicenseSection(data, header, body));
 ({ header, body } = CreateSection(data.contributing, "Contributing", header, body));
 ({ header, body } = CreateSection(data.tests, "Tests", header, body));
 ({ header, body } = CreateSection(`Please reach out to ${data.userName} on Github or email: ${data.email}`, "Questions", header, body));
@@ -37,7 +43,7 @@ return header + "\n" + body;
 
 function CreateSection(text, section, header, body) {
   if (ResponseHasContent(text)) {
-    header += `- ${section}
+    header += `- [${section}](#${section})
 `;
 
     body += `### ${section}
@@ -45,6 +51,7 @@ ${text}
 
 `;
   }
+
   return { header, body };
 }
 

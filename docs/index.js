@@ -33,10 +33,54 @@ const questions = [
         name: "license",
         message: "Please select a license for this project:",
         choices: [
-            "Apache License 2.0",
-            "GNU General Public License v3.0",
-            "MIT License",
-            "No License"
+            {
+                name: "Apache 2.0",
+                value: "Apache_2.0"
+            },
+            {
+                name: "GNU General Public License v3.0",
+                value: "GPLv3"
+            },
+            {
+                name: "MIT License",
+                value: "MIT"
+            },
+            {
+                name: "BSD 2-Clause 'Simplified' License",
+                value: "BSD_2--Clause"
+            },
+            {
+                name: "BSD 3-Clause 'New' or 'Revised' License",
+                value: "BSD_3--Clause"
+            },
+            {
+                name: "Boost Software License 1.0",
+                value: "Boost_1.0"
+            },
+            {
+                name: "Creative Commons Zero v1.0 Universal",
+                value: "CC0_1.0"
+            },
+            {
+                name: "Eclipse Public LIcense 2.0",
+                value: "EPL_2.0"
+            },
+            {
+                name: "GNU Affero General Public License v3.0",
+                value: "AGPL_v3"
+            },
+            {
+                name: "GNU General Public License v2.0",
+                value: "GPL_v2"
+            },
+            {
+                name: "GNU Lesser General Public License v2.1",
+                value: "LGPL_v2.1"
+            },
+            {
+                name: "None",
+                value: "none"
+            }
         ],
         validate: gm.ResponseHasContent
     },
