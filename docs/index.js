@@ -1,9 +1,14 @@
-// TODO: Include packages needed for this application
+/*********************************************************
+ * Imported Modules
+ *********************************************************/
 const inquirer = require("inquirer");
 const fs = require("fs");
 const gm = require("./utils/generateMarkdown");
 
-// TODO: Create an array of questions for user input
+/*********************************************************
+ * Static Data
+ *********************************************************/
+const outputPath = "output";
 const questions = [
     {
         type: "input",
@@ -108,34 +113,37 @@ const questions = [
         validate: gm.ResponseHasContent
     }
 ];
+/*********************************************************
+ * App functions
+ *********************************************************/
 
-// TODO: Create a function to write README file
 function writeToFile(fileName, data) {
-    if(!fs.existsSync("./output"))
-    {
-        fs.mkdirSync("./output");
-    }
+    CreateDirectory(outputPath);
 
-    fs.writeFile("output/"+fileName, gm.generateMarkdown(data), (error) => {
-        if(error){
+    fs.writeFile(outputPath + "/" + fileName, gm.generateMarkdown(data), (error) => {
+        if (error) {
             console.log(`There was an error: ${error}`);
         } else {
-            console.log("Please checkout the output folder for your file.")
+            console.log(`Please checkout the ${outputPath} folder for your file.`)
         }
     });
 }
 
-// TODO: Create a function to initialize app
+//Will check if the directory supplied exists and if it doesn't will create it
+function CreateDirectory(dir) {
+    if (!fs.existsSync(dir)) {
+        fs.mkdirSync(dir);
+    }
+}
+
 function init() {
     inquirer
         .prompt(
-        questions
+            questions
         )
         .then((answers) => {
             writeToFile("README.md", answers);
         })
 }
 
-// Function call to initialize app
 init();
-

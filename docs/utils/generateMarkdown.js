@@ -1,4 +1,3 @@
-
 function renderLicenseSection(data, header, body) {
   if (data.license != "none") {
     return CreateSection(renderLicenseBadge(data.license), "License", header, body);
@@ -15,10 +14,11 @@ function renderLicenseLink(license) {
   return `https://img.shields.io/badge/license-${license}-blue.svg`
 }
 
+//Returns a string of content based on the data provided.
 function generateMarkdown(data) {
   //needed to convert multi-lines of text from the description into markdown exepcted line endings.
   const lineEndRegEx = /\r\n/g;
-  
+
   let header = "";
   let body = "";
 
@@ -30,17 +30,17 @@ ${data.description.replace(lineEndRegEx, "  \n")};
 ## Contents
 `;
 
-({ header, body } = CreateSection(data.install, "Installation", header, body));
-({ header, body } = CreateSection(data.usage, "Usage", header, body));
-({ header, body } = renderLicenseSection(data, header, body));
-({ header, body } = CreateSection(data.contributing, "Contributing", header, body));
-({ header, body } = CreateSection(data.tests, "Tests", header, body));
-({ header, body } = CreateSection(`Please reach out to ${data.userName} on Github or email: ${data.email}`, "Questions", header, body));
+  ({ header, body } = CreateSection(data.install, "Installation", header, body));
+  ({ header, body } = CreateSection(data.usage, "Usage", header, body));
+  ({ header, body } = renderLicenseSection(data, header, body));
+  ({ header, body } = CreateSection(data.contributing, "Contributing", header, body));
+  ({ header, body } = CreateSection(data.tests, "Tests", header, body));
+  ({ header, body } = CreateSection(`Please reach out to ${data.userName} on Github or email: ${data.email}`, "Questions", header, body));
 
-return header + "\n" + body;
-
+  return header + "\n" + body;
 }
 
+//Will check if section contains content, if it does, it will append the table of contents entry and body of the content. 
 function CreateSection(text, section, header, body) {
   if (ResponseHasContent(text)) {
     header += `- [${section}](#${section})
@@ -55,20 +55,21 @@ ${text}
   return { header, body };
 }
 
+//Returns ture if input has a value
 function ResponseHasContent(input) {
   switch (typeof input) {
-      case "string":
-          if(input.trim().length < 1){
-              console.log("\n Please provide a response.");
-              return false;
-          } 
+    case "string":
+      if (input.trim().length < 1) {
+        console.log("\n Please provide a response.");
+        return false;
+      }
 
-          return true;
-          break;
-      default:
-          console.log("\n",`Response of type ${typeof input} is not supported.`);
-          return false;
-          break;
+      return true;
+      break;
+    default:
+      console.log("\n", `Response of type ${typeof input} is not supported.`);
+      return false;
+      break;
   }
 }
 
