@@ -9,13 +9,13 @@ const questions = [
         type: "input",
         name: "title",
         message: "What would you like the Title of the readme to be?",
-        validate: ResponseHasContent
+        validate: gm.ResponseHasContent
     },
     {
         type: "editor",
         name: "description",
         message: "Please provide a description for the readme:",
-        validate: ResponseHasContent
+        validate: gm.ResponseHasContent
     },
     {
         type: "input",
@@ -26,7 +26,7 @@ const questions = [
         type: "input",
         name: "usage",
         message: "Please provide a instructions on how to use this project:",
-        validate: ResponseHasContent
+        validate: gm.ResponseHasContent
     },
     {
         type: "list",
@@ -38,13 +38,13 @@ const questions = [
             "MIT License",
             "No License"
         ],
-        validate: ResponseHasContent
+        validate: gm.ResponseHasContent
     },
     {
         type: "input",
         name: "contributing",
         message: "How should folks contribute to this project?",
-        validate: ResponseHasContent
+        validate: gm.ResponseHasContent
     },
     {
         type: "input",
@@ -55,19 +55,13 @@ const questions = [
         type: "input",
         name: "userName",
         message: "Please provide your github user name:",
-        validate: ResponseHasContent
+        validate: gm.ResponseHasContent
     },
     {
         type: "input",
         name: "email",
         message: "Please provide your email or email address for project contact:",
-        validate: ResponseHasContent
-    },
-    {
-        type: "input",
-        name: "questions",
-        message: "Please include any info for how folks should reach out if they have questions on this project:",
-        validate: ResponseHasContent
+        validate: gm.ResponseHasContent
     }
 ];
 
@@ -101,19 +95,3 @@ function init() {
 // Function call to initialize app
 init();
 
-function ResponseHasContent(input) {
-    switch (typeof input) {
-        case "string":
-            if(input.trim().length < 1){
-                console.log("\n Please provide a response.");
-                return false;
-            } 
-
-            return true;
-            break;
-        default:
-            console.log("\n",`Response of type ${typeof input} is not supported.`);
-            return false;
-            break;
-    }
-}
