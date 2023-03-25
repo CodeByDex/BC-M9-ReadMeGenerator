@@ -20,5 +20,8 @@
   "bugs": {
     "url": "https://github.com/CodeByDex/BC-M9-ReadMeGenerator/issues"
   },
-  "homepage": "https://github.com/CodeByDex/BC-M9-ReadMeGenerator#readme"
+  "homepage": "https://github.com/CodeByDex/BC-M9-ReadMeGenerator#readme",
+  "dependencies": {
+    "inquirer": "^8.2.4"
+  }
 }

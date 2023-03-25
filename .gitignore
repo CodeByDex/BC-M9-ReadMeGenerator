@@ -1,0 +1,5 @@
+#Node Files to Ignore
+node_modules/
+
+#environment files to Ignore
+.DS_Store/
