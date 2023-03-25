@@ -98,7 +98,7 @@ function ResponseHasContent(input) {
             return true;
             break;
         default:
-            console.log(`Response of type ${typeof input} is not supported.`);
+            console.log("\n",`Response of type ${typeof input} is not supported.`);
             return false;
             break;
     }
