@@ -1,5 +1,6 @@
 // TODO: Include packages needed for this application
 const inquirer = require("inquirer");
+const fs = require("fs");
 
 // TODO: Create an array of questions for user input
 const questions = [
@@ -71,7 +72,20 @@ const questions = [
 ];
 
 // TODO: Create a function to write README file
-function writeToFile(fileName, data) {}
+function writeToFile(fileName, data) {
+    if(!fs.existsSync("./output"))
+    {
+        fs.mkdirSync("./output");
+    }
+
+    fs.writeFile("output/"+fileName, JSON.stringify(data), (error) => {
+        if(error){
+            console.log(`There was an error: ${error}`);
+        } else {
+            console.log("Please checkout the output folder for your file.")
+        }
+    });
+}
 
 // TODO: Create a function to initialize app
 function init() {
@@ -80,7 +94,7 @@ function init() {
         questions
         )
         .then((answers) => {
-            console.log(answers)
+            writeToFile("README.md", answers);
         })
 }
 
