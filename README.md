@@ -15,9 +15,13 @@ It will take a series of prompts and from those generate a ReadMe.MD file. ;
 
 ### Installation
 After cloning this project you will need to run `npm i` from the docs directory to install required modules to run the application. 
+![image](https://user-images.githubusercontent.com/119005046/227784890-ea6abbdd-a23b-47cd-98e9-db947c0b2c9b.png)
+
 
 ### Usage
 from the docs directory you need to run the application using `node index.js`
+![image](https://user-images.githubusercontent.com/119005046/227784957-d523e53b-f3a3-4ff4-9244-c78a97193976.png)
+
 
 ### License
 This Project is not licensed
